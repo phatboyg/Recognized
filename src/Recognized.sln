@@ -1,0 +1,33 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2013
+VisualStudioVersion = 12.0.30110.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Recognized", "Recognized\Recognized.csproj", "{6CABC86C-22A8-442B-94D6-E795B8FDDDC1}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Recognized.Tests", "Recognized.Tests\Recognized.Tests.csproj", "{960CDF0E-0F2B-46D0-B96A-D3E12B6E2EEE}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{421F683A-21C6-4E40-96F2-FE7D56267562}"
+	ProjectSection(SolutionItems) = preProject
+		.nuget\packages.config = .nuget\packages.config
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{6CABC86C-22A8-442B-94D6-E795B8FDDDC1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6CABC86C-22A8-442B-94D6-E795B8FDDDC1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6CABC86C-22A8-442B-94D6-E795B8FDDDC1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6CABC86C-22A8-442B-94D6-E795B8FDDDC1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{960CDF0E-0F2B-46D0-B96A-D3E12B6E2EEE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{960CDF0E-0F2B-46D0-B96A-D3E12B6E2EEE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{960CDF0E-0F2B-46D0-B96A-D3E12B6E2EEE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{960CDF0E-0F2B-46D0-B96A-D3E12B6E2EEE}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

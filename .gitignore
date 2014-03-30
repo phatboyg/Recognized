@@ -1,0 +1,16 @@
+build_artifacts/*
+build_output/*
+
+**/*.suo
+**/**/*.suo
+**/*.user
+**/**/*.user
+
+
+bin
+obj
+
+
+NuGet.exe
+packages
+
