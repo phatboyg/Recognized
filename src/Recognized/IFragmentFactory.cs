@@ -1,10 +1,7 @@
 ﻿namespace Recognized
 {
-    using System.Collections.Generic;
-
-
     public interface IFragmentFactory
     {
-        IEnumerable<Fragment> CreateFragments(TextRef text);
+        bool TryCreateFragment(TextRef text, out Fragment fragment);
     }
 }

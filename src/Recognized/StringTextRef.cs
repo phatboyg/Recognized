@@ -10,28 +10,21 @@
         TextRef
     {
         readonly int _count;
-        readonly Func<string> _getString;
         readonly int _offset;
         readonly string _text;
+        Func<string> _getString;
+        string _substring;
 
         public StringTextRef(string text, int offset, int count)
         {
+            if (text == null)
+                throw new ArgumentNullException("text");
+
             _text = text;
             _offset = offset;
             _count = count;
 
-            string s = null;
-            bool computed = false;
-            _getString = () =>
-                {
-                    if (computed)
-                        return s;
-
-                    s = text.Substring(offset, count);
-                    computed = true;
-
-                    return s;
-                };
+            _getString = ExtractSubstring;
         }
 
         public StringTextRef(string text)
@@ -43,13 +36,13 @@
             _offset = 0;
             _count = text.Length;
 
-            _getString = () => text;
+            _getString = GetString;
         }
 
         /// <summary>
         ///     The number of characters from the source text included in this reference
         /// </summary>
-        public int Count
+        int TextRef.Count
         {
             get { return _count; }
         }
@@ -57,7 +50,7 @@
         /// <summary>
         ///     The offset into the source text for this reference
         /// </summary>
-        public int Offset
+        int TextRef.Offset
         {
             get { return _offset; }
         }
@@ -65,19 +58,33 @@
         /// <summary>
         ///     The source text referred to by the reference
         /// </summary>
-        public string Text
+        string TextRef.Text
         {
             get { return _text; }
         }
 
-        public string GetString()
+        string TextRef.GetString()
         {
             return _getString();
         }
 
-        public static implicit operator string(StringTextRef text)
+        string GetString()
         {
-            return text.GetString();
+            return _text;
+        }
+
+        string ExtractSubstring()
+        {
+            _substring = _text.Substring(_offset, _count);
+
+            _getString = GetSubstring;
+
+            return _substring;
+        }
+
+        string GetSubstring()
+        {
+            return _substring;
         }
     }
 }

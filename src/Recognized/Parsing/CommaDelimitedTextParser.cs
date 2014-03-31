@@ -1,24 +1,24 @@
 ﻿namespace Recognized.Parsing
 {
-    public class NewLineTextParser :
+    public class CommaDelimitedTextParser :
         ITextParser
     {
+        static readonly TextParserSettings _defaultSettings = new TextParserSettings();
         readonly ITextSeparator _textSeparator;
         readonly ITextWhiteSpace _textWhiteSpace;
-        static readonly TextParserSettings _defaultSettings = new TextParserSettings();
 
-        public NewLineTextParser()
+        public CommaDelimitedTextParser()
             : this(_defaultSettings)
         {
         }
 
-        public NewLineTextParser(TextParserSettings settings)
+        public CommaDelimitedTextParser(TextParserSettings settings)
         {
             _textWhiteSpace = settings.WhiteSpaceHandling == WhiteSpaceHandling.Remove
                 ? (ITextWhiteSpace) new SkipTextWhiteSpace()
                 : new RetainTextWhiteSpace();
 
-            _textSeparator = new NewLineTextSeparator();
+            _textSeparator = new DelimiterTextSeparator(',');
         }
 
         public int FindSeparator(string text, int offset, int count, out int separatorLength)

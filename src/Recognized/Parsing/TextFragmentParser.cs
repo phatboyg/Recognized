@@ -10,8 +10,8 @@
         readonly IFragmentFactory _fragmentFactory;
         readonly List<Fragment> _fragments;
         readonly int _parseEnd;
-        readonly ITextParser _textParser;
         readonly TextRef _text;
+        readonly ITextParser _textParser;
         int _parseOffset;
 
         public TextFragmentParser(TextRef text, ITextParser textParser, IFragmentFactory fragmentFactory)
@@ -56,7 +56,7 @@
 
                 int endIndex = _textParser.TrimWhiteSpace(_text.Text, _parseOffset, remaining, separatorIndex);
 
-                AddFragments(endIndex - _parseOffset);
+                AddFragment(endIndex - _parseOffset);
 
                 _parseOffset = separatorIndex + separatorLength;
 
@@ -64,7 +64,7 @@
 
                 if (_parseEnd == _parseOffset)
                 {
-                    AddFragments(0);
+                    AddFragment(0);
                 }
             }
 
@@ -73,7 +73,7 @@
                 int endIndex = _parseOffset + remaining;
                 endIndex = _textParser.TrimWhiteSpace(_text.Text, _parseOffset, remaining, endIndex);
 
-                AddFragments(endIndex - _parseOffset);
+                AddFragment(endIndex - _parseOffset);
 
                 _parseOffset += remaining;
 
@@ -90,13 +90,15 @@
             return false;
         }
 
-        void AddFragments(int count)
+        void AddFragment(int count)
         {
             TextRef text = _parseOffset == _text.Offset && count == _text.Count
                 ? _text
                 : new StringTextRef(_text.Text, _parseOffset, count);
 
-            _fragments.AddRange(_fragmentFactory.CreateFragments(text));
+            Fragment fragment;
+            if (_fragmentFactory.TryCreateFragment(text, out fragment))
+                _fragments.Add(fragment);
         }
     }
 }

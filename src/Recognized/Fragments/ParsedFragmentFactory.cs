@@ -1,17 +1,15 @@
 ﻿namespace Recognized.Fragments
 {
-    using System.Collections.Generic;
-
-
     /// <summary>
     ///     Simply returns parsed text as a parsed fragment that cannot be further parsed
     /// </summary>
     public class ParsedFragmentFactory :
         IFragmentFactory
     {
-        public IEnumerable<Fragment> CreateFragments(TextRef text)
+        public bool TryCreateFragment(TextRef text, out Fragment fragment)
         {
-            yield return new ParsedFragment(text);
+            fragment = new ParsedFragment(text);
+            return true;
         }
     }
 }

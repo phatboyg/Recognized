@@ -1,8 +1,8 @@
 ﻿namespace Recognized.Parsing
 {
-    public class NewLineTextParserSettings
+    public class TextParserSettings
     {
-        public NewLineTextParserSettings()
+        public TextParserSettings()
         {
             WhiteSpaceHandling = WhiteSpaceHandling.Remove;
         }

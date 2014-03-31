@@ -61,7 +61,7 @@
 
             var textRef = new StringTextRef(line);
 
-            var settings = new NewLineTextParserSettings {WhiteSpaceHandling = WhiteSpaceHandling.Retain};
+            var settings = new TextParserSettings {WhiteSpaceHandling = WhiteSpaceHandling.Retain};
             ITextParser textParser = new NewLineTextParser(settings);
             IFragmentFactory lineFragmentFactory = new ParsedFragmentFactory();
             var fragmentParser = new TextFragmentParser(textRef, textParser, lineFragmentFactory);

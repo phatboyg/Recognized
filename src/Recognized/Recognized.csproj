@@ -34,12 +34,14 @@
     <Reference Include="System.Core" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DelimitedFragmentFactory.cs" />
     <Compile Include="Exceptions\EmptyValueException.cs" />
     <Compile Include="Exceptions\NullValueException.cs" />
     <Compile Include="Exceptions\ReflectionException.cs" />
     <Compile Include="Exceptions\ValueException.cs" />
     <Compile Include="Exceptions\RecognizedException.cs" />
     <Compile Include="Fragment.cs" />
+    <Compile Include="FragmentExtensions.cs" />
     <Compile Include="Fragments\SkipEmptyFragmentFactory.cs" />
     <Compile Include="IFragmentFactory.cs" />
     <Compile Include="Fragments\DelimitedFragment.cs" />
@@ -48,8 +50,9 @@
     <Compile Include="IFragmentParser.cs" />
     <Compile Include="ITextParser.cs" />
     <Compile Include="ModelMap.cs" />
+    <Compile Include="Parsing\CommaDelimitedTextParser.cs" />
     <Compile Include="Parsing\NewLineTextParser.cs" />
-    <Compile Include="Parsing\NewLineTextParserSettings.cs" />
+    <Compile Include="Parsing\TextParserSettings.cs" />
     <Compile Include="Parsing\TextFragmentParser.cs" />
     <Compile Include="Parsing\DelimiterTextSeparator.cs" />
     <Compile Include="Parsing\ITextSeparator.cs" />

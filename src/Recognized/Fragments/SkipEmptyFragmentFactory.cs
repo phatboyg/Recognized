@@ -1,9 +1,5 @@
 ﻿namespace Recognized.Fragments
 {
-    using System.Collections.Generic;
-    using System.Linq;
-
-
     /// <summary>
     ///     A fragment provider that goes in front of another and skips empty text
     /// </summary>
@@ -17,12 +13,15 @@
             _fragmentFactory = fragmentFactory;
         }
 
-        public IEnumerable<Fragment> CreateFragments(TextRef text)
+        public bool TryCreateFragment(TextRef text, out Fragment fragment)
         {
             if (text.Count == 0)
-                return Enumerable.Empty<Fragment>();
+            {
+                fragment = default(Fragment);
+                return false;
+            }
 
-            return _fragmentFactory.CreateFragments(text);
+            return _fragmentFactory.TryCreateFragment(text, out fragment);
         }
     }
 }
