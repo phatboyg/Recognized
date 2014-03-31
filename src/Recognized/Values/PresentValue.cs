@@ -1,4 +1,4 @@
-namespace Recognized
+namespace Recognized.Values
 {
     using System;
     using System.Diagnostics;

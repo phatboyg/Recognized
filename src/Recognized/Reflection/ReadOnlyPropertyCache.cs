@@ -1,11 +1,7 @@
-namespace Internals.Reflection
+namespace Recognized.Reflection
 {
     using System;
-    using System.Linq;
     using System.Linq.Expressions;
-    using Caching;
-    using Extensions;
-    using Recognized.Reflection;
 
 
     class ReadOnlyPropertyCache<T> :

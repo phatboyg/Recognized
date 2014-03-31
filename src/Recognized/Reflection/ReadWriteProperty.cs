@@ -1,10 +1,9 @@
-namespace Internals.Reflection
+namespace Recognized.Reflection
 {
     using System;
     using System.Linq.Expressions;
     using System.Reflection;
-    using Extensions;
-    using Recognized.Reflection;
+    using Reflection;
 
 
     class ReadWriteProperty :

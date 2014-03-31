@@ -1,6 +1,7 @@
-﻿namespace Recognized.TypeConverters
+﻿namespace Recognized
 {
     using System;
+    using TypeConverters;
 
 
     public static class ValueTypeConverter

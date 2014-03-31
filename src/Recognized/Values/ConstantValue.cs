@@ -1,7 +1,8 @@
-﻿namespace Recognized
+namespace Recognized.Values
 {
     using System;
     using System.Diagnostics;
+    using Parsing;
 
 
     [DebuggerDisplay("{DebugText}")]
@@ -67,7 +68,7 @@
             string text;
             if (_textConverter.TryConvert(_value, out text))
             {
-                var textRef = new TextRef(text);
+                var textRef = new StringTextRef(text);
                 _text = () => textRef;
                 _isPresent = True;
                 return true;

@@ -1,10 +1,8 @@
-namespace Internals.Reflection
+namespace Recognized.Reflection
 {
     using System;
-    using System.Linq;
     using System.Linq.Expressions;
-    using Caching;
-    using Extensions;
+
 
     class ReadWritePropertyCache<T> :
         AbstractCacheDecorator<string, ReadWriteProperty<T>>

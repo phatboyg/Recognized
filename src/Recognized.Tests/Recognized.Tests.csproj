@@ -38,6 +38,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AddressMap.cs" />
+    <Compile Include="LineParseStrategy_Specs.cs" />
     <Compile Include="Model_Specs.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Reflection\Nullable_Specs.cs" />

@@ -1,5 +1,8 @@
 ﻿namespace Recognized
 {
+    using Values;
+
+
     /// <summary>
     ///     A value in a model interface
     /// </summary>

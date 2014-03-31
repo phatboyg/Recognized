@@ -2,7 +2,7 @@
 {
     using System;
     using NUnit.Framework;
-    using TypeConverters;
+    using Parsing;
 
 
     [TestFixture]
@@ -17,7 +17,7 @@
 
             Guid result;
 
-            Assert.IsTrue(ValueTypeConverter.Guid.TryGetValue(new TextRef(s), out result));
+            Assert.IsTrue(ValueTypeConverter.Guid.TryGetValue(new StringTextRef(s), out result));
             Assert.AreEqual(expected, result);
         }
     }
