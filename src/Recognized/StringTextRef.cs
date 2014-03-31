@@ -1,4 +1,4 @@
-﻿namespace Recognized.Parsing
+﻿namespace Recognized
 {
     using System;
 

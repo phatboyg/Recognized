@@ -7,25 +7,25 @@
     public class TextFragmentParser :
         IFragmentParser
     {
-        readonly IFragmentProvider _fragmentProvider;
+        readonly IFragmentFactory _fragmentFactory;
         readonly List<Fragment> _fragments;
         readonly int _parseEnd;
         readonly ITextParser _textParser;
         readonly TextRef _text;
         int _parseOffset;
 
-        public TextFragmentParser(TextRef text, ITextParser textParser, IFragmentProvider fragmentProvider)
+        public TextFragmentParser(TextRef text, ITextParser textParser, IFragmentFactory fragmentFactory)
         {
             if (text == null)
                 throw new ArgumentNullException("text");
             if (textParser == null)
                 throw new ArgumentNullException("textParser");
-            if (fragmentProvider == null)
-                throw new ArgumentNullException("fragmentProvider");
+            if (fragmentFactory == null)
+                throw new ArgumentNullException("fragmentFactory");
 
             _text = text;
             _textParser = textParser;
-            _fragmentProvider = fragmentProvider;
+            _fragmentFactory = fragmentFactory;
 
             _parseOffset = text.Offset;
             _parseEnd = text.Offset + text.Count;
@@ -96,7 +96,7 @@
                 ? _text
                 : new StringTextRef(_text.Text, _parseOffset, count);
 
-            _fragments.AddRange(_fragmentProvider.GetFragments(text));
+            _fragments.AddRange(_fragmentFactory.CreateFragments(text));
         }
     }
 }

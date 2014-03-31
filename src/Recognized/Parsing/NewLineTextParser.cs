@@ -1,17 +1,20 @@
-﻿namespace Recognized
+﻿namespace Recognized.Parsing
 {
-    using Parsing;
-
-
     public class NewLineTextParser :
         ITextParser
     {
         readonly ITextSeparator _textSeparator;
         readonly ITextWhiteSpace _textWhiteSpace;
+        static readonly NewLineTextParserSettings _defaultSettings = new NewLineTextParserSettings();
 
-        public NewLineTextParser(bool removeWhiteSpace = true)
+        public NewLineTextParser()
+            : this(_defaultSettings)
         {
-            _textWhiteSpace = removeWhiteSpace
+        }
+
+        public NewLineTextParser(NewLineTextParserSettings settings)
+        {
+            _textWhiteSpace = settings.WhiteSpaceHandling == WhiteSpaceHandling.Remove
                 ? (ITextWhiteSpace) new SkipTextWhiteSpace()
                 : new RetainTextWhiteSpace();
 

@@ -6,10 +6,10 @@
     /// <summary>
     ///     Simply returns parsed text as a parsed fragment that cannot be further parsed
     /// </summary>
-    public class ParsedFragmentProvider :
-        IFragmentProvider
+    public class ParsedFragmentFactory :
+        IFragmentFactory
     {
-        public IEnumerable<Fragment> GetFragments(TextRef text)
+        public IEnumerable<Fragment> CreateFragments(TextRef text)
         {
             yield return new ParsedFragment(text);
         }
