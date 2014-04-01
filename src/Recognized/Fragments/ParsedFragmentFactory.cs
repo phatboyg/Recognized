@@ -6,7 +6,7 @@
     public class ParsedFragmentFactory :
         IFragmentFactory
     {
-        public bool TryCreateFragment(TextRef text, out Fragment fragment)
+        public bool TryCreateFragment(StringCursor text, out Fragment fragment)
         {
             fragment = new ParsedFragment(text);
             return true;

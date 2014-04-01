@@ -17,7 +17,7 @@
 
             Guid result;
 
-            Assert.IsTrue(ValueTypeConverter.Guid.TryGetValue(new StringTextRef(s), out result));
+            Assert.IsTrue(ValueTypeConverter.Guid.TryGetValue(new StringStringCursor(s), out result));
             Assert.AreEqual(expected, result);
         }
     }

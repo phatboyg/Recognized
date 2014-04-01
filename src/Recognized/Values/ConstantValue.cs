@@ -14,7 +14,7 @@ namespace Recognized.Values
         readonly TValue _value;
 
         Func<bool> _isPresent;
-        Func<TextRef> _text;
+        Func<StringCursor> _text;
 
         public ConstantValue(ITextConverter<TValue> textConverter, bool hasValue, TValue value)
         {
@@ -68,7 +68,7 @@ namespace Recognized.Values
             string text;
             if (_textConverter.TryConvert(_value, out text))
             {
-                var textRef = new StringTextRef(text);
+                var textRef = new StringStringCursor(text);
                 _text = () => textRef;
                 _isPresent = True;
                 return true;
@@ -79,7 +79,7 @@ namespace Recognized.Values
             return false;
         }
 
-        TextRef ValueConversionFailed()
+        StringCursor ValueConversionFailed()
         {
             string message = string.Format("String conversion from {0} failed: {1}", typeof(TValue).Name, _value);
 

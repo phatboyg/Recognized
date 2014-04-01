@@ -8,19 +8,17 @@
         IFragmentFactory
     {
         readonly ParsedFragmentFactory _fragmentFactory;
-        readonly ITextParser _textParser;
 
-        public DelimitedFragmentFactory(ParsedFragmentFactory fragmentFactory, ITextParser textParser)
+        public DelimitedFragmentFactory(ParsedFragmentFactory fragmentFactory)
         {
             _fragmentFactory = fragmentFactory;
-            _textParser = textParser;
         }
 
-        public bool TryCreateFragment(TextRef text, out Fragment fragment)
+        public bool TryCreateFragment(StringCursor text, out Fragment fragment)
         {
-            IFragmentParser fragmentParser = new TextFragmentParser(text, _textParser, _fragmentFactory);
+            ITextSplitter textSplitter = new SeparatorTextSplitter(text, new[] {'\r', '\n'});
 
-            fragment = new DelimitedFragment(text, fragmentParser);
+            fragment = new DelimitedFragment(textSplitter, _fragmentFactory);
             return true;
         }
     }

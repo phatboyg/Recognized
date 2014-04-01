@@ -7,33 +7,13 @@
     public class DelimitedFragment :
         Fragment
     {
-        readonly IFragmentParser _parser;
-        readonly TextRef _text;
+        readonly ITextSplitter _parser;
+        readonly IFragmentFactory _fragmentFactory;
 
-        public DelimitedFragment(TextRef text, IFragmentParser parser)
+        public DelimitedFragment(ITextSplitter parser, IFragmentFactory fragmentFactory)
         {
-            _text = text;
             _parser = parser;
-        }
-
-        public int Count
-        {
-            get { return _text.Count; }
-        }
-
-        public int Offset
-        {
-            get { return _text.Offset; }
-        }
-
-        public string Text
-        {
-            get { return _text.Text; }
-        }
-
-        public string GetString()
-        {
-            return _text.GetString();
+            _fragmentFactory = fragmentFactory;
         }
 
         public IEnumerator<Fragment> GetEnumerator()
@@ -41,7 +21,7 @@
             for (int index = 0;; index++)
             {
                 Fragment fragment;
-                if (!_parser.TryGetFragment(index, out fragment))
+                if (!TryGetFragment(index, out fragment))
                     yield break;
 
                 yield return fragment;
@@ -50,7 +30,14 @@
 
         public bool TryGetFragment(int index, out Fragment fragment)
         {
-            return _parser.TryGetFragment(index, out fragment);
+            StringCursor text;
+            if (_parser.TryGetText(index, out text))
+            {
+                return _fragmentFactory.TryCreateFragment(text, out fragment);
+            }
+
+            fragment = default(Fragment);
+            return false;
         }
 
         IEnumerator IEnumerable.GetEnumerator()

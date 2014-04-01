@@ -1,7 +1,5 @@
 ﻿namespace Recognized.Tests
 {
-    using System.Linq;
-    using Fragments;
     using NUnit.Framework;
     using Parsing;
 
@@ -9,114 +7,77 @@
     [TestFixture]
     public class LineParseStrategy_Specs
     {
-        static Fragment GetDelimitedFragment(TextRef textRef)
+        ITextSplitter GetSeparatorSplitter(string text)
         {
-            ITextParser textParser = new NewLineTextParser();
-            IFragmentFactory lineFragmentFactory = new ParsedFragmentFactory();
-            var fragmentParser = new TextFragmentParser(textRef, textParser, lineFragmentFactory);
+            var textRef = new StringStringCursor(text);
 
-            return new DelimitedFragment(textRef, fragmentParser);
+            return new SeparatorTextSplitter(textRef);
         }
 
         [Test]
         public void Should_parse_a_single_line()
         {
-            string line = "Hello, World.";
+            const string line = "Hello, World.";
 
-            var textRef = new StringTextRef(line);
+            var splitter = GetSeparatorSplitter(line);
 
-            var delimitedFragment = GetDelimitedFragment(textRef);
+            var lines = splitter.ToList();
 
-            var fragments = delimitedFragment.ToList();
+            Assert.AreEqual(1, lines.Count);
 
-            Assert.AreEqual(1, fragments.Count);
-
-            Assert.AreEqual(line, fragments[0].GetString());
+            Assert.AreEqual(line, lines[0].GetString());
         }
 
         [Test]
         public void Should_parse_a_two_lines()
         {
-            string line = @"Hello, World.  
-  How are you?";
-
-            var textRef = new StringTextRef(line);
-
-            var delimitedFragment = GetDelimitedFragment(textRef);
-
-            var fragments = delimitedFragment.ToList();
-
-            Assert.AreEqual(2, fragments.Count);
-
-            Assert.AreEqual("Hello, World.", fragments[0].GetString());
-            Assert.AreEqual("How are you?", fragments[1].GetString());
-        }
-
-        [Test]
-        public void Should_parse_a_two_lines_and_retain_whitespace()
-        {
-            string line = @"Hello, World.  
-  
-  How are you?";
-
-            var textRef = new StringTextRef(line);
-
-            var settings = new TextParserSettings {WhiteSpaceHandling = WhiteSpaceHandling.Retain};
-            ITextParser textParser = new NewLineTextParser(settings);
-            IFragmentFactory lineFragmentFactory = new ParsedFragmentFactory();
-            var fragmentParser = new TextFragmentParser(textRef, textParser, lineFragmentFactory);
-            Fragment delimitedFragment = new DelimitedFragment(textRef, fragmentParser);
-
-            var fragments = delimitedFragment.ToList();
-
-            Assert.AreEqual(3, fragments.Count);
-
-            Assert.AreEqual("Hello, World.  ", fragments[0].GetString());
-            Assert.AreEqual("  ", fragments[1].GetString());
-            Assert.AreEqual("  How are you?", fragments[2].GetString());
-        }
-
-        [Test]
-        public void Should_parse_a_two_lines_and_strip_blank_lines()
-        {
-            string line = @"Hello, World.
-
+            const string line = @"Hello, World.
 How are you?";
 
-            var textRef = new StringTextRef(line);
+            var splitter = GetSeparatorSplitter(line);
 
-            ITextParser textParser = new NewLineTextParser();
-            IFragmentFactory lineFragmentFactory = new ParsedFragmentFactory();
-            var skipFragmentProvider = new SkipEmptyFragmentFactory(lineFragmentFactory);
-            var fragmentParser = new TextFragmentParser(textRef, textParser, skipFragmentProvider);
-            var delimitedFragment = (Fragment) new DelimitedFragment(textRef, fragmentParser);
+            var lines = splitter.ToList();
 
-            var fragments = delimitedFragment.ToList();
+            Assert.AreEqual(2, lines.Count);
 
-            Assert.AreEqual(2, fragments.Count);
-
-            Assert.AreEqual("Hello, World.", fragments[0].GetString());
-            Assert.AreEqual("How are you?", fragments[1].GetString());
+            Assert.AreEqual("Hello, World.", lines[0].GetString());
+            Assert.AreEqual("How are you?", lines[1].GetString());
         }
 
         [Test]
         public void Should_parse_a_two_lines_with_a_blank_one()
         {
-            string line = @"Hello, World.
+            const string line = @"Hello, World.
 
 How are you?";
 
-            var textRef = new StringTextRef(line);
+            var splitter = GetSeparatorSplitter(line);
 
-            var delimitedFragment = GetDelimitedFragment(textRef);
+            var lines = splitter.ToList();
 
-            var fragments = delimitedFragment.ToList();
+            Assert.AreEqual(3, lines.Count);
 
-            Assert.AreEqual(3, fragments.Count);
+            Assert.AreEqual("Hello, World.", lines[0].GetString());
+            Assert.AreEqual("", lines[1].GetString());
+            Assert.AreEqual("How are you?", lines[2].GetString());
+        }
 
-            Assert.AreEqual("Hello, World.", fragments[0].GetString());
-            Assert.AreEqual("", fragments[1].GetString());
-            Assert.AreEqual("How are you?", fragments[2].GetString());
+        [Test]
+        public void Should_parse_three_lines()
+        {
+            const string line = @"Hello, World.  
+  
+  How are you?";
+
+            var splitter = GetSeparatorSplitter(line);
+
+            var lines = splitter.ToList();
+
+            Assert.AreEqual(3, lines.Count);
+
+            Assert.AreEqual("Hello, World.  ", lines[0].GetString());
+            Assert.AreEqual("  ", lines[1].GetString());
+            Assert.AreEqual("  How are you?", lines[2].GetString());
         }
     }
 }

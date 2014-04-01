@@ -10,9 +10,9 @@
     public class ParsedFragment :
         Fragment
     {
-        readonly TextRef _text;
+        readonly StringCursor _text;
 
-        public ParsedFragment(TextRef text)
+        public ParsedFragment(StringCursor text)
         {
             _text = text;
         }
@@ -29,7 +29,7 @@
 
         public string Text
         {
-            get { return _text.Text; }
+            get { return _text.Data; }
         }
 
         public string GetString()

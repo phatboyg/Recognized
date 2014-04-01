@@ -2,6 +2,6 @@
 {
     public interface IFragmentFactory
     {
-        bool TryCreateFragment(TextRef text, out Fragment fragment);
+        bool TryCreateFragment(StringCursor text, out Fragment fragment);
     }
 }

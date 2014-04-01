@@ -4,7 +4,6 @@
 
 
     public interface Fragment :
-        TextRef,
         IEnumerable<Fragment>
     {
         /// <summary>

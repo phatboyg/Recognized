@@ -8,13 +8,13 @@ namespace Recognized.Values
     public class PresentValue<TValue> :
         Value<TValue>
     {
-        readonly TextRef _text;
+        readonly StringCursor _text;
         readonly ITypeConverter<TValue> _typeConverter;
 
         Func<bool> _hasValue;
         Func<TValue> _value;
 
-        public PresentValue(TextRef text, ITypeConverter<TValue> typeConverter)
+        public PresentValue(StringCursor text, ITypeConverter<TValue> typeConverter)
         {
             _text = text;
             _typeConverter = typeConverter;

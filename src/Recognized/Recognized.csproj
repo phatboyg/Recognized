@@ -34,6 +34,7 @@
     <Reference Include="System.Core" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Cursor.cs" />
     <Compile Include="DelimitedFragmentFactory.cs" />
     <Compile Include="Exceptions\EmptyValueException.cs" />
     <Compile Include="Exceptions\NullValueException.cs" />
@@ -47,13 +48,15 @@
     <Compile Include="Fragments\DelimitedFragment.cs" />
     <Compile Include="Fragments\ParsedFragment.cs" />
     <Compile Include="Fragments\ParsedFragmentFactory.cs" />
-    <Compile Include="IFragmentParser.cs" />
+    <Compile Include="ITextSplitter.cs" />
     <Compile Include="ITextParser.cs" />
+    <Compile Include="LocationStringCursor.cs" />
     <Compile Include="ModelMap.cs" />
     <Compile Include="Parsing\CommaDelimitedTextParser.cs" />
+    <Compile Include="Parsing\DelimiterTextSplitter.cs" />
     <Compile Include="Parsing\NewLineTextParser.cs" />
     <Compile Include="Parsing\TextParserSettings.cs" />
-    <Compile Include="Parsing\TextFragmentParser.cs" />
+    <Compile Include="Parsing\SeparatorTextSplitter.cs" />
     <Compile Include="Parsing\DelimiterTextSeparator.cs" />
     <Compile Include="Parsing\ITextSeparator.cs" />
     <Compile Include="Parsing\ITextWhiteSpace.cs" />
@@ -63,14 +66,15 @@
     <Compile Include="Reflection\ModelInfo.cs" />
     <Compile Include="Reflection\PropertyExpressionExtensions.cs" />
     <Compile Include="Reflection\ReadOnlyProperty.cs" />
-    <Compile Include="StringTextRef.cs" />
+    <Compile Include="StringStringCursor.cs" />
+    <Compile Include="TextSplitterExtensions.cs" />
     <Compile Include="WhiteSpaceHandling.cs" />
     <None Include="Reflection\ReadOnlyPropertyCache.cs" />
     <None Include="Reflection\ReadWriteProperty.cs" />
     <None Include="Reflection\ReadWritePropertyCache.cs" />
     <Compile Include="Reflection\TypeExtensions.cs" />
     <Compile Include="TextConverters\GuidTextConverter.cs" />
-    <Compile Include="TextRef.cs" />
+    <Compile Include="StringCursor.cs" />
     <Compile Include="TypeConverters\GuidTypeConverter.cs" />
     <Compile Include="IValue.cs" />
     <Compile Include="ITextConverter.cs" />

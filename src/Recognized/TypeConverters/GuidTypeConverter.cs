@@ -6,7 +6,7 @@
     public class GuidTypeConverter :
         ITypeConverter<Guid>
     {
-        bool ITypeConverter<Guid>.TryGetValue(TextRef text, out Guid value)
+        bool ITypeConverter<Guid>.TryGetValue(StringCursor text, out Guid value)
         {
             return Guid.TryParse(text.GetString(), out value);
         }

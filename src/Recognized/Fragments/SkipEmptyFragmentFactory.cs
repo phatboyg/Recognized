@@ -13,7 +13,7 @@
             _fragmentFactory = fragmentFactory;
         }
 
-        public bool TryCreateFragment(TextRef text, out Fragment fragment)
+        public bool TryCreateFragment(StringCursor text, out Fragment fragment)
         {
             if (text.Count == 0)
             {
