@@ -37,19 +37,19 @@
 
             Assert.AreEqual(13, columns.Count);
 
-            Assert.AreEqual("gameid", columns[0].GetString());
-            Assert.AreEqual("qtr", columns[1].GetString());
-            Assert.AreEqual("min", columns[2].GetString());
-            Assert.AreEqual("sec", columns[3].GetString());
-            Assert.AreEqual("off", columns[4].GetString());
-            Assert.AreEqual("def", columns[5].GetString());
-            Assert.AreEqual("down", columns[6].GetString());
-            Assert.AreEqual("togo", columns[7].GetString());
-            Assert.AreEqual("ydline", columns[8].GetString());
-            Assert.AreEqual("description", columns[9].GetString());
-            Assert.AreEqual("offscore", columns[10].GetString());
-            Assert.AreEqual("defscore", columns[11].GetString());
-            Assert.AreEqual("season", columns[12].GetString());
+            Assert.AreEqual("gameid", columns[0].String);
+            Assert.AreEqual("qtr", columns[1].String);
+            Assert.AreEqual("min", columns[2].String);
+            Assert.AreEqual("sec", columns[3].String);
+            Assert.AreEqual("off", columns[4].String);
+            Assert.AreEqual("def", columns[5].String);
+            Assert.AreEqual("down", columns[6].String);
+            Assert.AreEqual("togo", columns[7].String);
+            Assert.AreEqual("ydline", columns[8].String);
+            Assert.AreEqual("description", columns[9].String);
+            Assert.AreEqual("offscore", columns[10].String);
+            Assert.AreEqual("defscore", columns[11].String);
+            Assert.AreEqual("season", columns[12].String);
         }
 
         [Test]

@@ -49,9 +49,9 @@
             get { return _data; }
         }
 
-        public string GetString()
+        public string String
         {
-            return _getString();
+            get { return _getString(); }
         }
 
         string ExtractSubstring()

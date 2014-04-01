@@ -11,7 +11,7 @@
         /// <summary>
         ///     Return the substring for this reference, which is cached in case it is requested multiple times
         /// </summary>
-        /// <returns></returns>
-        string GetString();
+        /// <value></value>
+        string String { get; }
     }
 }

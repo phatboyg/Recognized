@@ -25,7 +25,7 @@
 
             Assert.AreEqual(1, lines.Count);
 
-            Assert.AreEqual(line, lines[0].GetString());
+            Assert.AreEqual(line, lines[0].String);
         }
 
         [Test]
@@ -40,8 +40,8 @@ How are you?";
 
             Assert.AreEqual(2, lines.Count);
 
-            Assert.AreEqual("Hello, World.", lines[0].GetString());
-            Assert.AreEqual("How are you?", lines[1].GetString());
+            Assert.AreEqual("Hello, World.", lines[0].String);
+            Assert.AreEqual("How are you?", lines[1].String);
         }
 
         [Test]
@@ -57,9 +57,9 @@ How are you?";
 
             Assert.AreEqual(3, lines.Count);
 
-            Assert.AreEqual("Hello, World.", lines[0].GetString());
-            Assert.AreEqual("", lines[1].GetString());
-            Assert.AreEqual("How are you?", lines[2].GetString());
+            Assert.AreEqual("Hello, World.", lines[0].String);
+            Assert.AreEqual("", lines[1].String);
+            Assert.AreEqual("How are you?", lines[2].String);
         }
 
         [Test]
@@ -75,9 +75,9 @@ How are you?";
 
             Assert.AreEqual(3, lines.Count);
 
-            Assert.AreEqual("Hello, World.  ", lines[0].GetString());
-            Assert.AreEqual("  ", lines[1].GetString());
-            Assert.AreEqual("  How are you?", lines[2].GetString());
+            Assert.AreEqual("Hello, World.  ", lines[0].String);
+            Assert.AreEqual("  ", lines[1].String);
+            Assert.AreEqual("  How are you?", lines[2].String);
         }
     }
 }

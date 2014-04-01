@@ -8,7 +8,7 @@
     {
         bool ITypeConverter<Guid>.TryGetValue(StringCursor text, out Guid value)
         {
-            return Guid.TryParse(text.GetString(), out value);
+            return Guid.TryParse(text.String, out value);
         }
     }
 }

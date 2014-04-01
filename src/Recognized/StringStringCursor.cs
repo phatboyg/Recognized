@@ -33,9 +33,9 @@
             get { return _data; }
         }
 
-        string StringCursor.GetString()
+        string StringCursor.String
         {
-            return _data;
+            get { return _data; }
         }
     }
 }

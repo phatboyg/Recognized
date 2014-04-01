@@ -34,7 +34,7 @@
 
         public string GetString()
         {
-            return _text.GetString();
+            return _text.String;
         }
 
         public IEnumerator<Fragment> GetEnumerator()
